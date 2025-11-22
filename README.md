@@ -1,6 +1,8 @@
 # Xe Tự Hành 2 Chế Độ
 Phát triển từ hệ thống nhúng xe thay thế điều khiển qua mạch Bluetooth và sử dụng wifi thông qua các ESP để điều khiển, hiển thị hình ảnh thực tế qua ESP cam
+
 📋 Mục lục
+
 Tổng quan
 Phần cứng cần thiết
 Sơ đồ kết nối
@@ -10,12 +12,17 @@ Các chế độ hoạt động
 Lệnh điều khiển
 Cấu hình
 Giải thích code
+
 🎯 Tổng quan
+
 Xe robot này được thiết kế với 2 chế độ hoạt động chính:
+
 
 Chế độ 1 - Điều khiển Bluetooth: Người dùng điều khiển xe qua Bluetooth bằng các lệnh đơn giản
 Chế độ 2 - Tự động: Xe tự động di chuyển và tránh vật cản sử dụng cảm biến siêu âm và cảm biến hồng ngoại
+
 🔧 Phần cứng cần thiết
+
 Linh kiện chính:
 Arduino Uno (hoặc tương thích)
 Module L298N - Driver điều khiển động cơ DC
@@ -29,6 +36,7 @@ Phụ kiện:
 Dây nối, breadboard
 Khung xe robot
 Bánh xe và bánh đỡ
+
 🔌 Sơ đồ kết nối
 Động cơ (L298N):
 ENA  → Pin 6  (PWM - Bánh trái)
@@ -56,6 +64,7 @@ TX → Pin 0 (RX của Arduino)
 RX → Pin 1 (TX của Arduino)
 VCC → 5V
 GND → GND
+
 📥 Cài đặt
 Cài đặt Arduino IDE
 
@@ -72,6 +81,7 @@ Mở file v1.ino trong Arduino IDE
 Chọn board: Tools → Board → Arduino Uno
 Chọn cổng COM: Tools → Port → Chọn cổng của Arduino
 Nhấn nút Upload (→) để nạp code
+
 🎮 Hướng dẫn sử dụng
 Bước 1: Kết nối phần cứng
 Kết nối tất cả linh kiện theo sơ đồ ở trên
@@ -83,6 +93,7 @@ Mở ứng dụng Serial Bluetooth Terminal hoặc ứng dụng điều khiển 
 Bước 3: Điều khiển xe
 Xe khởi động ở Chế độ 1 (Điều khiển Bluetooth)
 Gửi các lệnh qua Bluetooth để điều khiển xe (xem phần Lệnh điều khiển)
+
 🚗 Các chế độ hoạt động
 Chế độ 1: Điều khiển Bluetooth
 Người dùng điều khiển xe thủ công qua Bluetooth
@@ -108,6 +119,7 @@ S - Dừng (Stop)
 Điều chỉnh tốc độ (Chế độ 1):
 3 - Tốc độ Vừa (150)
 4 - Tốc độ Tối đa (255)
+
 ⚙️ Cấu hình
 Các thông số có thể điều chỉnh trong code:
 
@@ -121,6 +133,7 @@ const int SCAN_DELAY = 300;          // Thời gian chờ servo quay (ms)
 const int SERVO_CENTER = 90;         // Góc giữa của servo
 const int SERVO_LEFT = 150;          // Góc trái của servo
 const int SERVO_RIGHT = 30;          // Góc phải của servo
+
 📖 Giải thích code
 Cấu trúc chương trình:
 Phần 1: Cấu hình chân kết nối
@@ -171,17 +184,20 @@ Nếu cả 2 bên đều bị chặn → Lùi và rẽ trái
 Nếu đường trống:
 
 Tiến thẳng
+
 ⚠️ Lưu ý
 Đảm bảo nguồn cung cấp đủ công suất cho động cơ
 Kiểm tra kết nối trước khi sử dụng
 Trong chế độ tự động, có thể ngắt khẩn cấp bằng lệnh '1'
 Cảm biến IR: LOW = có vật cản, HIGH = không có vật cản
 Điều chỉnh AVOID_DISTANCE phù hợp với môi trường sử dụng
+
 🐛 Xử lý lỗi
 Xe không di chuyển: Kiểm tra kết nối động cơ và nguồn
 Bluetooth không kết nối: Kiểm tra module Bluetooth và cổng Serial
 Cảm biến không hoạt động: Kiểm tra kết nối và nguồn cấp
 Servo không quay: Kiểm tra kết nối và nguồn 5V
+
 📝 License
 Dự án mã nguồn mở, tự do sử dụng và chỉnh sửa.
 
